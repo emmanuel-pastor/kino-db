@@ -1,0 +1,20 @@
+.Image {
+    width: 20vh;
+    max-height: 30vh;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+}
+
+.EmptyImage{
+    height: 30vh;
+    background: white;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.EmptyLogo {
+    max-width: 6vw;
+    height: auto;
+}

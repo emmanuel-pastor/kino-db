@@ -1,0 +1,27 @@
+.Caption {
+    margin: auto;
+    max-width: 16em;
+}
+
+.MovieTitle {
+    margin-block-start: 0.7em;
+    margin-block-end: 0.2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.RatingRow {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.RatingRow * {
+    margin: 0 5px;
+}
+
+.RatingIcon {
+    max-width: 1.3em;
+    height: auto;
+}
