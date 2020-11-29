@@ -28,6 +28,8 @@ export class Fetcher {
         if (response.ok) {
             const jsonResponse = await response.json();
             this.updateState(jsonResponse);
+        } else {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
     }
 }

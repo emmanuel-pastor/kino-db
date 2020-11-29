@@ -3,7 +3,7 @@ import style from './MoviePosterCaption.module.css'
 import star from '../../../img/star.svg';
 
 interface Props {
-    title: string
+    title?: string
     vote_average: number
 }
 
@@ -13,7 +13,7 @@ const MoviePosterCaption = (props: Props) => {
             <h2 className={style.MovieTitle}>{props.title ?? "unknown title"}</h2>
             <div className={style.RatingRow}>
                 <img className={style.RatingIcon} src={star} alt={''}/>
-                <span>{props.vote_average ?? NaN}</span>
+                <span>{props.vote_average ?? "NaN"}</span>
             </div>
         </div>
     );
