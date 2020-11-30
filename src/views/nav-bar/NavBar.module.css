@@ -1,12 +1,13 @@
 .LogoTitleLink {
     text-decoration: none;
     color: black;
+    align-self: center;
 }
 
 .NavBar {
     display: flex;
+    justify-content: space-between;
     width: 100%;
-    padding: 0.5em 0;
     box-shadow: var(--devsite-header-lower-box-shadow,0 1px 2px 0 rgba(60,64,67,.3),0 2px 6px 2px rgba(60,64,67,.15));
     margin-bottom: 3vh;
 }
@@ -27,4 +28,28 @@
     font-family: Courgette, serif;
     margin-block-start: 0;
     margin-block-end: 0;
+}
+
+.NavigationLinks {
+    display: flex;
+    min-width: 18em;
+    justify-content: space-between;
+    list-style: none;
+    /*margin-right: 0.8em;*/
+    padding-inline-start: 0;
+    font-size: larger;
+    margin: 0.7em 0.8em 0.7em 0;
+}
+
+.NavigationLinks a {
+    display: block;
+    text-decoration: none;
+    padding: 13px 0;
+    color: gray;
+}
+
+.NavigationLinks a.active {
+    border-bottom: 3px solid #fe6d8e;
+    padding: 13px 0 10px 0;
+    color: black;
 }

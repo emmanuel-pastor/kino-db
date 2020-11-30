@@ -1,15 +1,3 @@
 .App {
-  text-align: center;
-}
-
-.MovieList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: flex-start;
-}
-
-.MovieList > * {
-  flex: 1 0 17%;
-  margin: 10px;
+  font-family: Roboto, serif;
 }
