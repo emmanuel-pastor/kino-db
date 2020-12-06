@@ -8,7 +8,7 @@ interface Props {
 function EmptyListComponent(props: Props): JSX.Element {
     return (
       <div style={style}>
-          <h1 hidden={props.hidden}>There are no movies that matched your query... Sorry!</h1>
+          <h1 hidden={props.hidden}>There are no movies that match your query... Sorry!</h1>
       </div>
     );
 }

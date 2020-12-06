@@ -4,6 +4,7 @@ import logo from '../../img/logo.svg';
 import {NavigationPath} from "../../util/NavigationUtil";
 import {useLocation} from "react-router";
 import {NavLink} from "react-router-dom";
+import Searchbar from "./Searchbar/Searchbar";
 
 function NavBar() {
 
@@ -26,6 +27,7 @@ function NavBar() {
                 <NavLink to={NavigationPath.POPULAR_MOVIES} activeClassName={style.active}>
                     <li>{"Popular Movies"}</li>
                 </NavLink>
+                <Searchbar />
             </ul>
         </div>
     );

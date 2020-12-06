@@ -32,7 +32,7 @@
 
 .NavigationLinks {
     display: flex;
-    min-width: 18em;
+    min-width: 30em;
     justify-content: space-between;
     list-style: none;
     /*margin-right: 0.8em;*/
