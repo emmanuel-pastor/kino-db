@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function Searchbar() {
     const classes = useStyles();
-    const {search, setSearch, fetchMultiSearch} = useContext(MovieListContext);
+    const {search, setSearch, fetchMovies} = useContext(MovieListContext);
     const history = useHistory();
 
     return (
@@ -75,7 +75,7 @@ export default function Searchbar() {
                 onKeyPress={(event) => {
                     if (event.key === 'Enter') {
                         history.push(`/search/${search}`);
-                        fetchMultiSearch(search);
+                        fetchMovies(search);
                     }
                 }}
             />

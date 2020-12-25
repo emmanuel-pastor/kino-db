@@ -8,7 +8,7 @@ import {MovieListContext} from "./MovieListContext";
 
 function MovieListComponent() {
 
-    const {movies, fetchUpcomingMovies, fetchPopularMovies, fetchMultiSearch} = useContext(MovieListContext);
+    const {movies, fetchUpcomingMovies, fetchPopularMovies, fetchMovies} = useContext(MovieListContext);
     const {pathname} = useLocation();
 
     useEffect(() => {
@@ -24,7 +24,7 @@ function MovieListComponent() {
                 break;
             default:
                 if (pathname.startsWith(NavigationPath.SEARCH))
-                    fetchMultiSearch(pathname.split(NavigationPath.SEARCH)[1].substring(1));
+                    fetchMovies(pathname.split(NavigationPath.SEARCH)[1].substring(1));
                 break;
         }
     }, [pathname]);

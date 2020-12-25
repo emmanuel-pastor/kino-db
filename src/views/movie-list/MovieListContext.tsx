@@ -11,7 +11,7 @@ const defaultContext = {
     setSearch: (value: string) => {},
     fetchUpcomingMovies: () => {},
     fetchPopularMovies: () => {},
-    fetchMultiSearch: (search: string) => {}
+    fetchMovies: (search: string) => {}
 }
 
 export const MovieListContext = createContext(defaultContext);
@@ -37,10 +37,9 @@ const MovieContextProvider = (props: Props) => {
         })).fetch().catch(handleError);
     }
 
-    const fetchMultiSearch = (search: string) => {
-        (new Fetcher(RequestType.MULTI_SEARCH, (it) => {
-            const filteredList = it.results.filter((element: { media_type: string; }) => element.media_type === 'movie' || element.media_type === 'tv');
-            setMovies(filteredList);
+    const fetchMovies = (search: string) => {
+        (new Fetcher(RequestType.MOVIE_SEARCH, (it) => {
+            setMovies(it.results);
         })).addParameter("query", search).setCacheExpiration(0).fetch().catch(handleError);
     }
 
@@ -60,7 +59,7 @@ const MovieContextProvider = (props: Props) => {
     };
 
     return (
-        <MovieListContext.Provider value={{movies, search, setSearch, fetchUpcomingMovies, fetchPopularMovies, fetchMultiSearch}}>
+        <MovieListContext.Provider value={{movies, search, setSearch, fetchUpcomingMovies, fetchPopularMovies, fetchMovies}}>
             {props.children}
 
             <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar}>
