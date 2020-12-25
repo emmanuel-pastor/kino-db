@@ -5,6 +5,7 @@ import {NavigationPath} from "../../util/NavigationUtil";
 import {useLocation} from "react-router";
 import style from './MovieList.module.css'
 import {MovieListContext} from "./MovieListContext";
+import TMDbAttribution from "../tmdb-attribution/TMDbAttribution";
 
 function MovieListComponent() {
 
@@ -38,6 +39,7 @@ function MovieListComponent() {
             </div>
 
             <EmptyListComponent hidden={movies.length !== 0}/>
+            <TMDbAttribution />
         </div>
     );
 }
