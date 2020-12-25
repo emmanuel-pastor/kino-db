@@ -11,7 +11,7 @@ const MovieDetailsActorsSection = (props: Props) => {
     return(
         <div className={style.WrapperRow}>
             {props.actors?.map((actor) => (
-                <ActorComponent name={actor.name} character={actor.character} profile_path={actor.profile_path} />
+                <ActorComponent key={actor.id} name={actor.name} character={actor.character} profile_path={actor.profile_path} />
             ))}
         </div>
     )

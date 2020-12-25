@@ -39,8 +39,8 @@ const MovieDetailsSidePanel = (props: Props) => {
     return (
         <div className={style.SidePanel}>
             <Rating {...ratingObject}/>
-            {infoList.map((info) => (
-                <SidePanelInfoBlock {...info}/>
+            {infoList.map((info, index) => (
+                <SidePanelInfoBlock key={index} {...info}/>
             ))}
             <TrailerButton />
         </div>
