@@ -1,0 +1,11 @@
+.SidePanel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1em;
+    height: 80%;
+    width: 20%;
+    background: white;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+}

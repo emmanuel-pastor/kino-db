@@ -5,7 +5,10 @@ export enum RequestType {
     POPULAR_MOVIES = "/movie/popular",
     UPCOMING_MOVIES = "/movie/upcoming",
     MOVIE_SEARCH = "/search/movie",
-    MULTI_SEARCH = "/search/multi"
+    MULTI_SEARCH = "/search/multi",
+    MOVIE_DETAILS = "/movie",
+    MOVIE_CREDITS = "/credits",
+    MOVIE_VIDEOS = "/videos"
 }
 
 interface Cacheable {
@@ -19,7 +22,7 @@ export class Fetcher {
     private readonly updateState: (it: any) => void;
     private cacheExpirationTime = 1000 * 60 * 60 * 24;
 
-    constructor(requestType: RequestType, updateState: (it: any) => void) {
+    constructor(requestType: RequestType | string, updateState: (it: any) => void) {
         this.requestUrl = BASE_URL + requestType + "?api_key=" + API_KEY;
         this.requestType = requestType;
         this.updateState = updateState;

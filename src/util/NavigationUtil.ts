@@ -2,5 +2,6 @@ export enum NavigationPath {
     ROOT = "/",
     UPCOMING_MOVIES = "/upcoming",
     POPULAR_MOVIES = "/popular",
-    SEARCH = "/search"
+    SEARCH = "/search",
+    MOVIE_DETAILS = "/movie-details"
 }

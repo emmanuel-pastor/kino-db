@@ -1,0 +1,7 @@
+.WrapperRow {
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    column-gap: 2em;
+    overflow: auto;
+}

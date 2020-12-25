@@ -1,3 +1,6 @@
 .Component {
     margin-block-end: 3em;
+    text-decoration: none;
+    color: black;
+    text-align: center;
 }

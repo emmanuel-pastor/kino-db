@@ -1,6 +1,7 @@
 .Caption {
     margin: auto;
     max-width: 16em;
+    text-align: center;
 }
 
 .MovieTitle {

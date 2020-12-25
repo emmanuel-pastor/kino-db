@@ -1,0 +1,27 @@
+.common {
+    color: #494949; /*How to store colors in common place ?*/
+    border-radius: 20px;
+    border: solid 2px #DBDCE2;
+    padding: 0.3em 1.2em;
+    background: white;
+}
+
+.size-xsm {
+    font-size: x-small;
+}
+
+.size-sm {
+    font-size: small;
+}
+
+.size-md {
+    font-size: medium;
+}
+
+.size-lg {
+    font-size: large;
+}
+
+.size-xlg {
+    font-size: x-large;
+}

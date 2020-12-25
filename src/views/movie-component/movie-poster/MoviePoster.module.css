@@ -1,11 +1,19 @@
-.Image {
+.poster-md {
     width: 20vh;
     max-height: 30vh;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
 }
 
-.EmptyImage{
+.poster-lg {
+    width: 31vh;
+    max-height: none;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+}
+
+.EmptyImage-md{
     height: 30vh;
     background: white;
     margin: auto;
@@ -14,7 +22,22 @@
     align-items: center;
 }
 
-.EmptyLogo {
+.EmptyImage-lg {
+    min-width: 31vh;
+    height: 50vh;
+    background: white;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.EmptyLogo-md {
     max-width: 5em;
+    height: auto;
+}
+
+.EmptyLogo-lg {
+    max-width: 7em;
     height: auto;
 }

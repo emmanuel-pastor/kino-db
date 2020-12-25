@@ -1,0 +1,8 @@
+.Block > h2 {
+    margin-block: 0;
+}
+
+.Block > p {
+    margin-block: 0.2em 0;
+    color: #494949;
+}

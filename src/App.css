@@ -1,3 +1,11 @@
 .App {
   font-family: Roboto, serif;
 }
+
+html, body, div#root, .App{
+  height: 100%;
+}
+
+body *{
+  box-sizing: border-box;
+}

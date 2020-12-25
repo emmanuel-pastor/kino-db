@@ -1,8 +1,7 @@
 import React, {createContext, ReactElement, useState} from "react";
-import {Movie} from "./Movie";
-import {Fetcher, RequestType} from "./util/FetchUtil";
+import {Movie} from "../../domain/Movie";
+import {Fetcher, RequestType} from "../../util/FetchUtil";
 import Snackbar from "@material-ui/core/Snackbar";
-import {Alert} from "@material-ui/lab";
 import MuiAlert, {AlertProps} from "@material-ui/lab/Alert";
 
 
@@ -15,7 +14,7 @@ const defaultContext = {
     fetchMultiSearch: (search: string) => {}
 }
 
-export const MovieContext = createContext(defaultContext);
+export const MovieListContext = createContext(defaultContext);
 
 interface Props {
     children: ReactElement
@@ -61,7 +60,7 @@ const MovieContextProvider = (props: Props) => {
     };
 
     return (
-        <MovieContext.Provider value={{movies, search, setSearch, fetchUpcomingMovies, fetchPopularMovies, fetchMultiSearch}}>
+        <MovieListContext.Provider value={{movies, search, setSearch, fetchUpcomingMovies, fetchPopularMovies, fetchMultiSearch}}>
             {props.children}
 
             <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar}>
@@ -69,7 +68,7 @@ const MovieContextProvider = (props: Props) => {
                     Something went wrong
                 </Alert>
             </Snackbar>
-        </MovieContext.Provider>
+        </MovieListContext.Provider>
     );
 };
 

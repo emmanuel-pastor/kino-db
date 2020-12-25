@@ -1,0 +1,20 @@
+.Wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.Wrapper > img {
+    width: 45px;
+    height: auto;
+}
+
+.Wrapper > h2 {
+    margin-block: 0.1em 0.1em;
+}
+
+.Wrapper > span {
+    color: #827F7F;
+    margin-inline: 0;
+}

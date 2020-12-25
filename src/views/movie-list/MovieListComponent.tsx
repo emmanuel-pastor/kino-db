@@ -4,11 +4,11 @@ import EmptyListComponent from "../empty-list-component/EmptyListComponent";
 import {NavigationPath} from "../../util/NavigationUtil";
 import {useLocation} from "react-router";
 import style from './MovieList.module.css'
-import {MovieContext} from "../../MovieContext";
+import {MovieListContext} from "./MovieListContext";
 
 function MovieListComponent() {
 
-    const {movies, fetchUpcomingMovies, fetchPopularMovies, fetchMultiSearch} = useContext(MovieContext);
+    const {movies, fetchUpcomingMovies, fetchPopularMovies, fetchMultiSearch} = useContext(MovieListContext);
     const {pathname} = useLocation();
 
     useEffect(() => {
