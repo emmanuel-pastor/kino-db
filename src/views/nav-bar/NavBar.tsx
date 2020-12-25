@@ -12,12 +12,12 @@ function NavBar() {
 
     return (
         <div className={style.NavBar}>
-            <a className={style.LogoTitleLink} href={NavigationPath.ROOT}>
+            <NavLink to={NavigationPath.ROOT} activeClassName={style.LogoTitleDiv}>
                 <div className={style.LogoTitleDiv}>
                     <img className={style.Logo} src={logo} alt={"Website logo"}/>
                     <p className={style.NavTitle}>Kino Db</p>
                 </div>
-            </a>
+            </NavLink>
 
             <ul className={style.NavigationLinks}>
                 <NavLink to={NavigationPath.UPCOMING_MOVIES} activeClassName={style.active}
@@ -27,7 +27,7 @@ function NavBar() {
                 <NavLink to={NavigationPath.POPULAR_MOVIES} activeClassName={style.active}>
                     <li>{"Popular Movies"}</li>
                 </NavLink>
-                <Searchbar />
+                <Searchbar/>
             </ul>
         </div>
     );

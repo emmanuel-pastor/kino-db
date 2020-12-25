@@ -14,7 +14,7 @@ const App = () => {
         <MovieContextProvider>
             <div className="App">
                 <DetailedMovieContextProvider>
-                    <Router>
+                    <Router basename={'kino-db'}>
                         <NavBar/>
                         <Switch>
 
