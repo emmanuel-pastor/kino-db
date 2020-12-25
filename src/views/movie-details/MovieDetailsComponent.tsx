@@ -20,9 +20,10 @@ const MovieDetailsComponent = () => {
     }, []);
 
     const POSTER_BASE_URL = "https://image.tmdb.org/t/p";
+    let imageUrl = detailedMovie.poster_path === undefined ? '' : `${POSTER_BASE_URL}/w1280${detailedMovie.backdrop_path}`;
     const mainDivStyle = {
         display: 'flex',
-        backgroundImage: `url(${POSTER_BASE_URL}/w1280${detailedMovie.backdrop_path})`,
+        backgroundImage: `url(${imageUrl})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
