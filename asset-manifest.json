@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/kino-db/static/css/main.e88fb5cd.chunk.css",
+    "main.css": "/kino-db/static/css/main.bc509d77.chunk.css",
     "main.js": "/kino-db/static/js/main.b9411f46.chunk.js",
     "main.js.map": "/kino-db/static/js/main.b9411f46.chunk.js.map",
     "runtime-main.js": "/kino-db/static/js/runtime-main.457979bd.js",
@@ -10,7 +10,7 @@
     "static/js/3.fc42d8fa.chunk.js": "/kino-db/static/js/3.fc42d8fa.chunk.js",
     "static/js/3.fc42d8fa.chunk.js.map": "/kino-db/static/js/3.fc42d8fa.chunk.js.map",
     "index.html": "/kino-db/index.html",
-    "static/css/main.e88fb5cd.chunk.css.map": "/kino-db/static/css/main.e88fb5cd.chunk.css.map",
+    "static/css/main.bc509d77.chunk.css.map": "/kino-db/static/css/main.bc509d77.chunk.css.map",
     "static/js/2.08fc7341.chunk.js.LICENSE.txt": "/kino-db/static/js/2.08fc7341.chunk.js.LICENSE.txt",
     "static/media/logo.1ceaa3b0.svg": "/kino-db/static/media/logo.1ceaa3b0.svg",
     "static/media/person.d5b181df.svg": "/kino-db/static/media/person.d5b181df.svg",
@@ -21,7 +21,7 @@
   "entrypoints": [
     "static/js/runtime-main.457979bd.js",
     "static/js/2.08fc7341.chunk.js",
-    "static/css/main.e88fb5cd.chunk.css",
+    "static/css/main.bc509d77.chunk.css",
     "static/js/main.b9411f46.chunk.js"
   ]
 }
