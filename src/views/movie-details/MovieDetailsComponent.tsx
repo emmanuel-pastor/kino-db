@@ -6,10 +6,12 @@ import MovieDetailsMainSection from "./movie-details-main-section/MovieDetailsMa
 import MovieDetailsSidePanel from "./movie-details-side-pannel/MovieDetailsSidePanel";
 import {Crew} from "../../domain/MovieCredits";
 import MovieDetailsActorsSection from "./movie-details-actors-section/MovieDetailsActorsSection";
+import useWindowDimensions from "../../util/WindowDimensionUtil";
 
 const MovieDetailsComponent = () => {
     const movieUrl = useHistory();
     const movieId = parseInt(movieUrl.location.pathname.split('/').slice(-1)[0]);
+    const {height, width} = useWindowDimensions();
 
     const {detailedMovie, movieCredits, fetchMovieDetails, fetchMovieCredits, fetchMovieVideos} = useContext(DetailedMovieContext);
 
@@ -21,6 +23,7 @@ const MovieDetailsComponent = () => {
 
     const POSTER_BASE_URL = "https://image.tmdb.org/t/p";
     let imageUrl = detailedMovie.poster_path === undefined ? '' : `${POSTER_BASE_URL}/w1280${detailedMovie.backdrop_path}`;
+    const notDesktop = (width/height) < 1.77
     const mainDivStyle = {
         display: 'flex',
         backgroundImage: `url(${imageUrl})`,
@@ -28,8 +31,8 @@ const MovieDetailsComponent = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
         width: '100%',
-        height: '100%',
-        maxHeight: 'calc(100% - 76px)'
+        height: notDesktop? '' : '100%',
+        maxHeight: notDesktop ? '' : 'calc(100% - 76px)'
     } as CSSProperties
 
     const extractDirectorsName = (crew: Crew[]): string => {

@@ -15,7 +15,6 @@
 .Header > h1 {
     margin-block: 0;
     font-weight: normal;
-    font-size: 3vw;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -55,4 +54,13 @@
     display: -webkit-box;
     -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
+}
+
+@media only screen and (max-width: 750px) {
+    .Wrapper {
+        flex-direction: column;
+    }
+    .RightSection {
+        margin-left: 0;
+    }
 }

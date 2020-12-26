@@ -9,3 +9,15 @@
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
 }
+
+@media only screen and (max-device-aspect-ratio: 1919/1080) {
+    .SidePanel {
+        height: auto;
+        min-width: 20vh;
+        width: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        row-gap: 4vh;
+        margin: 0 1em;
+    }
+}

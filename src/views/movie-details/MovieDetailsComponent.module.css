@@ -17,3 +17,14 @@
     row-gap: 0.7em;
     padding: 0 1em;
 }
+
+@media only screen and (max-device-aspect-ratio: 1919/1080) {
+    .InnerDiv {
+        flex-direction: column;
+        column-gap: 0;
+        row-gap: 5vh;
+    }
+    .MainSection {
+        max-width: 100%;
+    }
+}
