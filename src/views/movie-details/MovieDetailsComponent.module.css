@@ -18,7 +18,7 @@
     padding: 0 1em;
 }
 
-@media only screen and (max-device-aspect-ratio: 1919/1080) {
+@media only screen and (max-width: 800px), only screen and (max-device-aspect-ratio: 1919/1080), only screen and (max-height: 800px) {
     .InnerDiv {
         flex-direction: column;
         column-gap: 0;
