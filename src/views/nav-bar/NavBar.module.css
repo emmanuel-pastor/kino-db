@@ -45,6 +45,19 @@
     margin: 0.7em 0.8em 0.7em 0;
 }
 
+@media only screen and (max-width: 800px) {
+    .NavigationLinks {
+        flex-direction: column;
+        min-width: 0;
+        align-items: center;
+        row-gap: 1em;
+    }
+    .NavBar {
+        flex-direction: column;
+        padding-top: 0.5em;
+    }
+}
+
 .NavigationLinks a {
     display: block;
     text-decoration: none;
