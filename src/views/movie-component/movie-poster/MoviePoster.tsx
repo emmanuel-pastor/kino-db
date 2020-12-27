@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './MoviePoster.module.css'
-import logo from '../../../img/logo.svg'
+import logo from '../../../img/film.svg'
 import {ComponentSize} from "../../../util/ComponentSize";
 
 interface Props {
