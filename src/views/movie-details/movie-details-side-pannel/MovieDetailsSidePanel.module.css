@@ -8,6 +8,7 @@
     background: white;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+    column-gap: 1.2em;
 }
 
 @media only screen and (max-width: 800px), only screen and (max-aspect-ratio: 1919/1080), only screen and (min-aspect-ratio: 1919/1080) and (max-height: 700px){

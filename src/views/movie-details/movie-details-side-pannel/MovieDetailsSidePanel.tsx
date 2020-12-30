@@ -5,8 +5,10 @@ import Rating from "./rating/Rating";
 import TrailerButton from "./trailer-button/TrailerButton";
 
 interface Props {
-    vote_average: number,
-    vote_count: number,
+    tmdb_vote_average: number,
+    tmdb_vote_count: number,
+    imdb_vote_average: string,
+    imdb_vote_count: number,
     director: string,
     release_date: string,
     budget: number,
@@ -24,7 +26,7 @@ const formatDate = (stringDate: string) => {
 }
 
 const formatVoteCount = (count: number) => {
-    return Intl.NumberFormat('en-US', {maximumSignificantDigits: 3}).format(count);
+    return Intl.NumberFormat('en-US').format(count);
 }
 
 const MovieDetailsSidePanel = (props: Props) => {
@@ -34,7 +36,7 @@ const MovieDetailsSidePanel = (props: Props) => {
     const revenue = {name: "Revenue", value: formatPrice(props.revenue)};
     const infoList = [director, releaseDate, budget, revenue];
 
-    const ratingObject = {vote_average: props.vote_average?.toString(), vote_count: formatVoteCount(props.vote_count)}
+    const ratingObject = {tmdb_vote_average: props.tmdb_vote_average, tmdb_vote_count: formatVoteCount(props.tmdb_vote_count), imdb_vote_average: props.imdb_vote_average, imdb_vote_count: formatVoteCount(props.imdb_vote_count)}
 
     return (
         <div className={style.SidePanel}>

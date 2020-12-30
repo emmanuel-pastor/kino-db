@@ -1,13 +1,24 @@
+.RowWrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-wrap: wrap;
+    row-gap: 1em;
+    column-gap: 1em;
+}
+
 .Wrapper {
     display: flex;
     flex-direction: column;
-    width: 100%;
     align-items: center;
+    justify-content: flex-end;
 }
 
 .Wrapper > img {
-    width: 45px;
+    width: 4em;
     height: auto;
+    margin-bottom: 0.5em;
 }
 
 .Wrapper > h2 {

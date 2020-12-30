@@ -13,7 +13,7 @@ const MovieDetailsComponent = () => {
     const movieId = parseInt(movieUrl.location.pathname.split('/').slice(-1)[0]);
     const {height, width} = useWindowDimensions();
 
-    const {detailedMovie, movieCredits, fetchMovieDetails, fetchMovieCredits, fetchMovieVideos} = useContext(DetailedMovieContext);
+    const {detailedMovie, rating, movieCredits, fetchMovieDetails, fetchMovieCredits, fetchMovieVideos} = useContext(DetailedMovieContext);
 
     useEffect(() => {
         fetchMovieDetails(movieId);
@@ -62,8 +62,10 @@ const MovieDetailsComponent = () => {
     }
 
     const sidePanelObject = {
-        vote_average: detailedMovie.vote_average,
-        vote_count: detailedMovie.vote_count,
+        tmdb_vote_average: detailedMovie.vote_average,
+        tmdb_vote_count: detailedMovie.vote_count,
+        imdb_vote_average: rating.averageRating,
+        imdb_vote_count: rating.numVotes,
         director: extractDirectorsName(movieCredits.crew),
         release_date: detailedMovie.release_date,
         budget: detailedMovie.budget,

@@ -1,5 +1,5 @@
 const API_KEY = process.env.REACT_APP_TMBD_API_KEY;
-const BASE_URL = "https://api.themoviedb.org/3";
+const DEFAULT_BASE_URL = "https://api.themoviedb.org/3";
 
 export enum RequestType {
     POPULAR_MOVIES = "/movie/popular",
@@ -8,7 +8,8 @@ export enum RequestType {
     MULTI_SEARCH = "/search/multi",
     MOVIE_DETAILS = "/movie",
     MOVIE_CREDITS = "/credits",
-    MOVIE_VIDEOS = "/videos"
+    MOVIE_VIDEOS = "/videos",
+    IMDB_RATING = "/rating"
 }
 
 interface Cacheable {
@@ -20,16 +21,18 @@ export class Fetcher {
     private requestUrl: string;
     private readonly requestType: string;
     private readonly updateState: (it: any) => void;
-    private cacheExpirationTime = 1000 * 60 * 60 * 24;
+    private cacheExpirationTime = 1000 * 60 * 60 * 12;
 
-    constructor(requestType: RequestType | string, updateState: (it: any) => void) {
-        this.requestUrl = BASE_URL + requestType + "?api_key=" + API_KEY;
+    constructor(requestType: RequestType | string, updateState: (it: any) => void, private baseUrl: string = DEFAULT_BASE_URL, private requiresApiKey: boolean = true) {
+        const apiKeyParameter = requiresApiKey ? "?api_key=" + API_KEY : "";
+        this.requestUrl = baseUrl + requestType + apiKeyParameter;
         this.requestType = requestType;
         this.updateState = updateState;
     }
 
     addParameter(name: string, value: string): Fetcher {
-        this.requestUrl += "&" + name + "=" + value;
+        const separator = this.requestUrl.includes("?") ? "&" : "?";
+        this.requestUrl += separator + name + "=" + value;
         return this;
     }
 
@@ -44,6 +47,7 @@ export class Fetcher {
         if (cachedValue !== "" && !this.isCacheExpired(cachedValue.timestamp)) {
             this.updateState(cachedValue.content);
         } else {
+            console.log(this.requestUrl)
             const response = await fetch(this.requestUrl);
             if (response.ok) {
                 const jsonResponse = await response.json();

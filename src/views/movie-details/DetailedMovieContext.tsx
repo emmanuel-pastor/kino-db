@@ -5,9 +5,11 @@ import {MovieCredits} from "../../domain/MovieCredits";
 import {Video} from "../../domain/Video";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert, {AlertProps} from "@material-ui/lab/Alert";
+import {IMDbRating} from "../../domain/IMDbRating";
 
 const defaultContext = {
     detailedMovie: {} as DetailedMovie,
+    rating: {id: "", averageRating: "0", numVotes: 0} as IMDbRating,
     movieCredits: {} as MovieCredits,
     trailer: {} as Video | null,
     fetchMovieDetails: (movieId: number) => {
@@ -26,13 +28,15 @@ interface Props {
 
 export const DetailedMovieContextProvider = (props: Props) => {
     const [detailedMovie, setDetailedMovie] = useState({} as DetailedMovie);
+    const [rating, setRating] = useState({} as IMDbRating)
     const [credits, setCredits] = useState({} as MovieCredits);
     const [trailer, setTrailer] = useState(null as Video | null);
     const [openSnackbar, setSnackbarOpen] = useState(false);
 
     const fetchMovieDetails = (movieId: number) => {
         (new Fetcher(`${RequestType.MOVIE_DETAILS}/${movieId}`, (it) => {
-            setDetailedMovie(it)
+            setDetailedMovie(it);
+            fetchIMDbRating(it.imdb_id);
         })).fetch().catch(handleError);
     }
 
@@ -46,6 +50,12 @@ export const DetailedMovieContextProvider = (props: Props) => {
         (new Fetcher(`${RequestType.MOVIE_DETAILS}/${movieId}${RequestType.MOVIE_VIDEOS}`, (it) => {
             extractTrailer(it.results);
         })).fetch().catch(handleError);
+    }
+
+    const fetchIMDbRating = (imdb_id: string) => {
+        (new Fetcher(`/${imdb_id}${RequestType.IMDB_RATING}`, (it) => {
+            setRating(it.result);
+        }, "https://kinodb.ssa-apis.com:8002", false)).fetch().catch(handleError);
     }
 
     const extractTrailer = (videos: Video[]) => {
@@ -79,6 +89,7 @@ export const DetailedMovieContextProvider = (props: Props) => {
     return (
         <DetailedMovieContext.Provider value={{
             detailedMovie,
+            rating,
             movieCredits: credits,
             trailer: trailer,
             fetchMovieDetails,
