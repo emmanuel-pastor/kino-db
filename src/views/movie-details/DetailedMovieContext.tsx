@@ -55,7 +55,7 @@ export const DetailedMovieContextProvider = (props: Props) => {
     const fetchIMDbRating = (imdb_id: string) => {
         (new Fetcher(`/${imdb_id}${RequestType.IMDB_RATING}`, (it) => {
             setRating(it.result);
-        }, "https://kinodb.ssa-apis.com:8002", false)).fetch().catch(handleError);
+        }, "https://kinodb.ssa-apis.com", false)).fetch().catch(handleError);
     }
 
     const extractTrailer = (videos: Video[]) => {

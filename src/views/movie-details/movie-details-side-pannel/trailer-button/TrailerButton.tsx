@@ -8,7 +8,6 @@ const TrailerButton = () => {
     const [link, setLink] = useState("#");
 
     const handleClick = () => {
-        console.log(trailer);
         switch (trailer?.site?.toLowerCase()) {
             case 'youtube':
                 setLink(`https://www.youtube.com/watch?v=${trailer?.key}`);

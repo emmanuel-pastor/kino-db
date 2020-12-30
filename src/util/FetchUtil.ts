@@ -47,7 +47,6 @@ export class Fetcher {
         if (cachedValue !== "" && !this.isCacheExpired(cachedValue.timestamp)) {
             this.updateState(cachedValue.content);
         } else {
-            console.log(this.requestUrl)
             const response = await fetch(this.requestUrl);
             if (response.ok) {
                 const jsonResponse = await response.json();
