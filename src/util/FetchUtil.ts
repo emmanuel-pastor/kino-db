@@ -42,7 +42,7 @@ export class Fetcher {
     }
 
     async fetch() {
-        const cachedValue: any = localStorage.getItem(this.requestType) ? JSON.parse(localStorage.getItem(this.requestType) as string) : "";
+        const cachedValue: any = window.sessionStorage.getItem(this.requestType) ? JSON.parse(window.sessionStorage.getItem(this.requestType) as string) : "";
 
         if (cachedValue !== "" && !this.isCacheExpired(cachedValue.timestamp)) {
             this.updateState(cachedValue.content);
@@ -51,7 +51,7 @@ export class Fetcher {
             if (response.ok) {
                 const jsonResponse = await response.json();
                 const cache: Cacheable = {timestamp: new Date().getTime(), content: jsonResponse}
-                localStorage.setItem(this.requestType, JSON.stringify(cache));
+                window.sessionStorage.setItem(this.requestType, JSON.stringify(cache));
                 this.updateState(jsonResponse);
             } else {
                 throw new Error(`HTTP error! status: ${response.status}`);
