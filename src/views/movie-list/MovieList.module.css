@@ -14,3 +14,21 @@
     flex: 1 0 17%;
     margin: 10px;
 }
+
+.GenreList {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    column-gap: 2vw;
+    row-gap: 1rem;
+    margin: 0 1.5vw 3vh 1.5vw;
+}
+
+@media only screen and (max-width: 1350px) {
+    .GenreList {
+        flex-wrap: nowrap;
+        overflow: auto;
+        justify-content: space-between;
+    }
+}

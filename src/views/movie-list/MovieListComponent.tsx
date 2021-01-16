@@ -6,6 +6,8 @@ import {useLocation} from "react-router";
 import style from './MovieList.module.css'
 import {MovieListContext} from "./MovieListContext";
 import TMDbAttribution from "../tmdb-attribution/TMDbAttribution";
+import {GENRE_LIST} from "../../domain/DetailedMovie";
+import GenreChip from "../genre-chip-component/GenreChip";
 
 function MovieListComponent() {
 
@@ -32,6 +34,14 @@ function MovieListComponent() {
 
     return (
         <div className={style.Wrapper}>
+            {pathname === NavigationPath.POPULAR_MOVIES ?
+                <div className={style.GenreList}>
+                    {GENRE_LIST.map(genre => (
+                        <GenreChip key={genre.id} genre={genre}/>
+                    ))}
+                </div> : null
+            }
+
             <div className={style.MovieList}>
                 {movies.map(movie => (
                     <MovieComponent key={movie.id} {...movie}/>
@@ -39,7 +49,7 @@ function MovieListComponent() {
             </div>
 
             <EmptyListComponent hidden={movies.length !== 0}/>
-            <TMDbAttribution />
+            <TMDbAttribution/>
         </div>
     );
 }
