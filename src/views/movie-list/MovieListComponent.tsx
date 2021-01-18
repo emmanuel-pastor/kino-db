@@ -6,8 +6,9 @@ import {useLocation} from "react-router";
 import style from './MovieList.module.css'
 import {MovieListContext} from "./MovieListContext";
 import TMDbAttribution from "../tmdb-attribution/TMDbAttribution";
-import {GENRE_LIST} from "../../domain/DetailedMovie";
+import {Genre, GENRE_LIST} from "../../domain/DetailedMovie";
 import GenreChip from "../genre-chip-component/GenreChip";
+import GenreList from "./genre-list/GenreList";
 
 function MovieListComponent() {
 
@@ -54,27 +55,13 @@ function MovieListComponent() {
         }
     }, [genres])
 
+    const onSetGenres = (genres: Array<Genre>) => {
+        setGenres(genres)
+    }
+
     return (
         <div className={style.Wrapper}>
-            {pathname === NavigationPath.POPULAR_MOVIES ?
-                <div className={style.GenreList}>
-                    {GENRE_LIST.map(genre => (
-                        <GenreChip key={genre.id} genre={genre} isSelected={genres.includes(genre)}
-                                   onClick={(genre, isSelected) => {
-                                       const newGenres = genres.slice()
-                                       if (!isSelected) {
-                                           if(newGenres.indexOf(genre) === -1)
-                                               newGenres.push(genre);
-                                       } else {
-                                           const index = newGenres.indexOf(genre)
-                                           if (index !== -1)
-                                               newGenres.splice(index, 1)
-                                       }
-                                       setGenres(newGenres)
-                                   }}/>
-                    ))}
-                </div> : null
-            }
+            {pathname === NavigationPath.POPULAR_MOVIES ? <GenreList genres={genres} setGenres={onSetGenres}/> : null}
 
             <div className={style.MovieList}>
                 {movies?.map(movie => (
