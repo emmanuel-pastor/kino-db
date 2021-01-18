@@ -3,15 +3,19 @@ import {Movie} from "../../domain/Movie";
 import {Fetcher, RequestType} from "../../util/FetchUtil";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert, {AlertProps} from "@material-ui/lab/Alert";
+import {Genre} from "../../domain/DetailedMovie";
 
 
 const defaultContext = {
     movies: Array<Movie>(1),
     search: "",
+    genres: Array<Genre>(),
     setSearch: (value: string) => {},
+    setGenres: (genres: Array<Genre>) => {},
     fetchUpcomingMovies: () => {},
     fetchPopularMovies: () => {},
-    fetchMovies: (search: string) => {}
+    fetchMovies: (search: string) => {},
+    fetchPopularMoviesByGenre: () => {}
 }
 
 export const MovieListContext = createContext(defaultContext);
@@ -24,6 +28,7 @@ const MovieContextProvider = (props: Props) => {
     const [movies, setMovies] = useState(Array<Movie>(1));
     const [search, setSearch] = useState("");
     const [openSnackbar, setSnackbarOpen] = useState(false);
+    const [genres, setGenres] = useState(Array<Genre>());
 
     const fetchPopularMovies = () => {
         (new Fetcher(RequestType.POPULAR_MOVIES, (it) => {
@@ -43,6 +48,12 @@ const MovieContextProvider = (props: Props) => {
         })).addParameter("query", search).setCacheExpiration(0).fetch().catch(handleError);
     }
 
+    const fetchPopularMoviesByGenre = () => {
+        (new Fetcher(RequestType.POPULAR_MOVIES_BY_GENRE, (it) => {
+            setMovies(it.results);
+        })).addParameter("with_genres", genres?.map(genre => genre.id).join(", ")).setCacheExpiration(0).fetch().catch(handleError);
+    }
+
     const handleError = () => {
         setSnackbarOpen(true);
     };
@@ -59,7 +70,7 @@ const MovieContextProvider = (props: Props) => {
     };
 
     return (
-        <MovieListContext.Provider value={{movies, search, setSearch, fetchUpcomingMovies, fetchPopularMovies, fetchMovies}}>
+        <MovieListContext.Provider value={{movies, search, genres, setSearch, setGenres, fetchUpcomingMovies, fetchPopularMovies, fetchMovies, fetchPopularMoviesByGenre}}>
             {props.children}
 
             <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={handleCloseSnackbar}>

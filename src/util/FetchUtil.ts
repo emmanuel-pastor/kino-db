@@ -9,7 +9,8 @@ export enum RequestType {
     MOVIE_DETAILS = "/movie",
     MOVIE_CREDITS = "/credits",
     MOVIE_VIDEOS = "/videos",
-    IMDB_RATING = "/rating"
+    IMDB_RATING = "/rating",
+    POPULAR_MOVIES_BY_GENRE = "/discover/movie"
 }
 
 interface Cacheable {

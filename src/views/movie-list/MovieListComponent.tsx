@@ -11,7 +11,15 @@ import GenreChip from "../genre-chip-component/GenreChip";
 
 function MovieListComponent() {
 
-    const {movies, fetchUpcomingMovies, fetchPopularMovies, fetchMovies} = useContext(MovieListContext);
+    const {
+        movies,
+        genres,
+        setGenres,
+        fetchUpcomingMovies,
+        fetchPopularMovies,
+        fetchMovies,
+        fetchPopularMoviesByGenre
+    } = useContext(MovieListContext);
     const {pathname} = useLocation();
 
     useEffect(() => {
@@ -23,7 +31,11 @@ function MovieListComponent() {
                 fetchUpcomingMovies();
                 break;
             case NavigationPath.POPULAR_MOVIES:
-                fetchPopularMovies();
+                if (!(genres?.length > 0)) {
+                    fetchPopularMovies();
+                } else {
+                    fetchPopularMoviesByGenre()
+                }
                 break;
             default:
                 if (pathname.startsWith(NavigationPath.SEARCH))
@@ -32,23 +44,45 @@ function MovieListComponent() {
         }
     }, [pathname]);
 
+    useEffect(() => {
+        if (genres !== undefined) {
+            if (genres.length > 0) {
+                fetchPopularMoviesByGenre()
+            } else {
+                fetchPopularMovies()
+            }
+        }
+    }, [genres])
+
     return (
         <div className={style.Wrapper}>
             {pathname === NavigationPath.POPULAR_MOVIES ?
                 <div className={style.GenreList}>
                     {GENRE_LIST.map(genre => (
-                        <GenreChip key={genre.id} genre={genre}/>
+                        <GenreChip key={genre.id} genre={genre} isSelected={genres.includes(genre)}
+                                   onClick={(genre, isSelected) => {
+                                       const newGenres = genres.slice()
+                                       if (!isSelected) {
+                                           if(newGenres.indexOf(genre) === -1)
+                                               newGenres.push(genre);
+                                       } else {
+                                           const index = newGenres.indexOf(genre)
+                                           if (index !== -1)
+                                               newGenres.splice(index, 1)
+                                       }
+                                       setGenres(newGenres)
+                                   }}/>
                     ))}
                 </div> : null
             }
 
             <div className={style.MovieList}>
-                {movies.map(movie => (
+                {movies?.map(movie => (
                     <MovieComponent key={movie.id} {...movie}/>
                 ))}
             </div>
 
-            <EmptyListComponent hidden={movies.length !== 0}/>
+            <EmptyListComponent hidden={movies?.length !== 0}/>
             <TMDbAttribution/>
         </div>
     );
