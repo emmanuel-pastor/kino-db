@@ -55,7 +55,7 @@ export class Fetcher {
                 window.sessionStorage.setItem(this.requestType, JSON.stringify(cache));
                 this.updateState(jsonResponse);
             } else {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                await Promise.reject({err: response.status});
             }
         }
     }
