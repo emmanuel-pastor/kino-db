@@ -2,7 +2,7 @@ import MovieComponent from "../movie-component/MovieComponent";
 import React, {useContext, useEffect} from "react";
 import EmptyListComponent from "../empty-list-component/EmptyListComponent";
 import {NavigationPath} from "../../util/NavigationUtil";
-import {useLocation} from "react-router";
+import {useLocation} from "react-router-dom";
 import style from './MovieList.module.css'
 import {MovieListContext} from "./MovieListContext";
 import TMDbAttribution from "../tmdb-attribution/TMDbAttribution";
@@ -49,7 +49,7 @@ function MovieListComponent() {
         if (genres !== undefined) {
             if (genres.length > 0) {
                 fetchPopularMoviesByGenre()
-            } else {
+            } else if (pathname === NavigationPath.POPULAR_MOVIES) {
                 fetchPopularMovies()
             }
         }
