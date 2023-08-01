@@ -1,5 +1,5 @@
 import React, {CSSProperties, useContext, useEffect} from "react";
-import {useHistory} from "react-router";
+import {useHistory} from "react-router-dom";
 import {DetailedMovieContext} from "./DetailedMovieContext";
 import style from './MovieDetailsComponent.module.css';
 import MovieDetailsMainSection from "./movie-details-main-section/MovieDetailsMainSection";

@@ -36,7 +36,6 @@ export const DetailedMovieContextProvider = (props: Props) => {
     const fetchMovieDetails = (movieId: number) => {
         (new Fetcher(`${RequestType.MOVIE_DETAILS}/${movieId}`, (it) => {
             setDetailedMovie(it);
-            fetchIMDbRating(it.imdb_id);
         })).fetch().catch(handleError);
     }
 
@@ -50,12 +49,6 @@ export const DetailedMovieContextProvider = (props: Props) => {
         (new Fetcher(`${RequestType.MOVIE_DETAILS}/${movieId}${RequestType.MOVIE_VIDEOS}`, (it) => {
             extractTrailer(it.results);
         })).fetch().catch(handleError);
-    }
-
-    const fetchIMDbRating = (imdb_id: string) => {
-        (new Fetcher(`/${imdb_id}${RequestType.IMDB_RATING}`, (it) => {
-            setRating(it.result);
-        }, "https://kinodb.ssa-apis.com", false)).fetch().catch(handleError);
     }
 
     const extractTrailer = (videos: Video[]) => {
