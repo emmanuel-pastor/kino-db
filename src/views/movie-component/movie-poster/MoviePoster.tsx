@@ -31,7 +31,7 @@ const MoviePoster = (props: Props) => {
         const url = POSTER_BASE_URL + quality + props.poster_path;
         return (
             <div>
-                <img className={style[`poster-${size}`]} src={url} alt={"Movie Poster"}/>
+                <img className={style[`poster-${size}`]} src={url} alt={"Movie Poster"} loading={"lazy"}/>
             </div>
         );
     }
